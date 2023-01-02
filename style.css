@@ -1,0 +1,93 @@
+*{
+    margin: 0; padding: 0;
+}
+h1{
+    display: inline;
+    color:red;
+}
+
+.home{
+    color:white;
+    text-decoration: none;
+    text-size-adjust: 28px;
+    font-size: 15px;
+    padding:1px 2px 1px 2px;
+    background-color: black;
+    margin-top: 1px;
+    margin-bottom: 20px;
+    border: 1px solid red;
+    border-radius: 5px;
+    text-align: center;
+}
+#atas{
+    
+    color: blue;
+    background-color: black;
+    padding: 20px black solid;
+    height: 100px;
+    border: 3px solid red;
+    
+}
+#konten-form{
+    background-color: black;
+    color:white;
+    padding: 5px;
+    margin: 5px;
+    width: 95%;
+    height: 100px;
+    
+}
+#atasan{
+    width: 20%;
+   
+}
+#inspek{
+    width: 70%;
+    background-color: aliceblue;
+    float: left;
+}
+footer{
+    color: white;
+    width: 70%;
+    margin-left: 20%;
+    height: 100px;
+}
+body{
+
+    margin-bottom: 10px;
+    background-image: url("background.jpg");
+}
+#dua{
+    margin-left: 200px;
+    color:black;
+    text-decoration: none;
+    text-size-adjust: 28px;
+    font-size: 20px;
+    padding:1px 2px 1px 2px;
+    background-color: antiquewhite;
+    margin-top: 1px;
+    border: 1px solid red;
+    border-radius: 5px;
+    text-align: center;
+}
+#isi{
+    background-color: white;
+    color: black;
+    font-size: 18px;
+}
+#error{
+    color: black;
+    background-color: brown;
+    margin: 1px;
+}
+}
+#tul{
+    font-size: 13px;
+}
+a{
+    text-decoration: none;
+}
+#pesan{
+    color: white;
+    display: inline;
+    
