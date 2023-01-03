@@ -24,7 +24,7 @@ return $hasil;
     global $link;
     $query ="INSERT INTO blog VALUES ('','$judul','$isi','$time','$tag')";
     if(mysqli_query($link,$query)){
-        header('Location: home.php');
+        header('Location: index.php');
     }else{
         echo "data gagal ditambahkan ";
     }
