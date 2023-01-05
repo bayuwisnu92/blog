@@ -1,5 +1,17 @@
 <?php
 
+
+function sistem_cari($cari){
+  global $link;
+  $query = "SELECT * FROM blog WHERE judul LIKE ?";
+  $stmt = mysqli_prepare($link, $query);
+  $cari_param = "%$cari%";
+  mysqli_stmt_bind_param($stmt, "s", $cari_param);
+  mysqli_stmt_execute($stmt);
+  $hasil = mysqli_stmt_get_result($stmt);
+  return $hasil;
+}
+
 //fungsi mengupdate data ke data base
 function rubah_kan($judul,$isi,$time,$tag,$id){
     global $link;
