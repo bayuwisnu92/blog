@@ -13,7 +13,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <!--navbar -->
 
+<?php if(isset($_GET['cari'])){
+  $cari =$_GET['cari'];
+  $semua = sistem_cari($cari);
+}
 
+ ?>
 
   <nav class="navbar navbar-expand-lg  bg-dark mb-2" >
     <div class="container-fluid text-light">
@@ -69,9 +74,9 @@
 
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
+        <form class="d-flex" role="search" method="get" action="">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="cari">
+          <button class="btn btn-outline-light" type="submit" >Search</button>
         </form>
       </div>
     </div>
