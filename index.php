@@ -1,66 +1,70 @@
-<?php require_once 'init/init.php'; ?>
 <?php
-$status = $_SESSION['user'];
-$semua = menambahkan();
-require_once 'view/header.php';
-// jika user belum login //
+require_once 'init/init.php';
 
-if( !isset($_SESSION['user'])){
-    $_SESSION['msg'] = 'dulu bro!!';
-    header('Location:log.php');
+// Jika user belum login
+if (!isset($_SESSION['user'])) {
+    $_SESSION['msg'] = 'Login dulu bro!!';
+    header('Location: log.php');
+    exit();
 }
 
-$idi= cek_status($status);
+$status = $_SESSION['user'];
+$semua = menambahkan();
+$idi = cek_status($status);
 
-
+require_once 'view/header.php';
 ?>
 
-<div class="container">
-<!--ini membuat colom-->
-<?php if(isset($_SESSION['user'])){ ?>
-  <?php if($idi != 0){ ?>
-  <a class="btn btn-primary mb-1" aria-current="page" href="crud/tambah.php">artikel+</a>
- <?php }else ?>
-<?php }else  ?>
+<div class="container mt-5">
+    <!-- Pesan selamat datang -->
+    <?php if (isset($_SESSION['user'])) { ?>
+        <div class="alert alert-success" role="alert">
+            Selamat datang, <?php echo $_SESSION['user']; ?>!
+        </div>
+        <?php if ($idi != 0) { ?>
+            <div class="mb-3">
+                <a class="btn btn-primary" href="crud/tambah.php">Tambah Artikel</a>
+            </div>
+        <?php } ?>
+    <?php } ?>
 
-<!--<div class=>
-<div class="">
-</div>
+    <a href="nindi.php" class="btn btn-secondary mb-3">Nindi</a>
 
-</div>colom pertama-->
- <a href="nindi.php">nindi</a>
-      <div class="row ">
-        <div class="col-8 bg-dark text-warning">
-          <div class="row bg-dark">
-              <?php foreach ($semua as $row): ?>
-                <div class="col-6 card mb-1 mr-1 ml-1" >
-                  <a href="halaman.php?id=<?php echo $row['id']; ?>" class="btn btn-light btn-sm">
-                    <div class="card-body">
-                      <h5 class="mr-20" ><?php echo 'JUDUL :'.$row['judul']; ?>  </h5>
-                      <p><?php echo ' '. excerpt($row['isi']); ?></p>
-                     <?php $status = $_SESSION['user'];
-                      $idi= cek_status($status); ?>
-                      <?php if($idi != 0){ ?>
-                      <a href="crud/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><img src="asset/edit.png" height="21" width="21"></a>
-                      <a href="crud/hapus.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><img src="asset/hapus.png" height="21" width="21"></a>
-                      <?php  } ?>
-                      <h5 style='display:inline'>tag:<?php echo $row['tag']; ?></h5>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <?php foreach ($semua as $row): ?>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <a href="halaman.php?id=<?php echo $row['id']; ?>" class="stretched-link">
+                                    <h5 class="card-title"><?php echo 'JUDUL: ' . $row['judul']; ?></h5>
+                                </a>
+                                <p class="card-text"><?php echo excerpt($row['isi']); ?></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-info text-dark">Tag: <?php echo $row['tag']; ?></span>
+                                    <?php if ($idi != 0) { ?>
+                                        <div>
+                                            <a href="crud/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm"><img src="asset/edit.png" alt="Edit" height="21" width="21"></a>
+                                            <a href="crud/hapus.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><img src="asset/hapus.png" alt="Hapus" height="21" width="21"></a>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </a>
-              </div>
-              <?php endforeach; ?>
-          </div>
-
-        </div
-<!--colom kedua -->
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="p-3 bg-light rounded-3">
+                <h4 class="text-center">Sidebar</h4>
+                <p>Tambahkan konten tambahan di sini seperti informasi penting, tautan, atau iklan.</p>
+            </div>
+        </div>
+    </div>
 </div>
-
-    <!--akhir kolom isi-->
-
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-<?php require_once 'view/footer.php';
+<?php require_once 'view/footer.php'; ?>
