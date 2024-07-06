@@ -1,7 +1,9 @@
 
 
   <!--</div>-->
+<div class="container">
+  <footer class="container"><p class="text-center">disini akan diisi sesuatu</p></footer>
 
-<footer class="container">disini akan diisi sesuatuS</footer>
+</div>
 </body>
 </html>

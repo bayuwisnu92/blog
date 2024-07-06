@@ -11,46 +11,28 @@ if (isset($id)) {
         $isi = $row['isi'];
         $time = $row['waktu'];
         $tag = $row['tag'];
+        $gambar = $row['gambar']; // Ambil path gambar
     endwhile;
 }
 ?>
 
-<div class="container-fluid mt-4">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-lg-3 mb-4">
-            <div class="bg-dark text-warning p-3 rounded">
-                <h4 class="text-center">Artikel Lainnya</h4>
-                <?php $semua = menambahkan(); ?>
-                <?php foreach ($semua as $row): ?>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <a href="?id=<?php echo $row['id']; ?>" class="text-decoration-none">
-                                <h5 class="card-title text-primary"><?php echo $row['judul']; ?></h5>
-                                <p class="card-text text-dark"><?php echo excerpt($row['isi']); ?></p>
-                            </a>
-                            <?php if (cek_status($_SESSION['user']) != 0): ?>
-                                <div class="d-flex justify-content-end">
-                                    <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm me-2"><img src="asset/edit.png" alt="Edit" height="21" width="21"></a>
-                                    <a href="hapus.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><img src="asset/hapus.png" alt="Hapus" height="21" width="21"></a>
-                                </div>
-                            <?php endif; ?>
-                            <p class="mt-2 mb-0"><strong>Tag:</strong> <?php echo $row['tag']; ?></p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <?php if (!empty($gambar)): ?>
+                <div class="text-center mb-4">
+                    <img src="<?php echo $gambar; ?>" alt="Gambar Artikel" style="max-width: 100%; height: auto;">
+                </div>
+            <?php endif; ?>
+            <h1 class="text-center mb-4"><?php echo $judul; ?></h1>
+            <div class="content">
+                <?php echo $isi; ?>
             </div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="col-lg-9">
-            <div class="card p-4">
-                <h1 class="card-title"><?php echo $judul; ?></h1>
-                <textarea class="form-control mt-3" name="isi" id="isi" cols="30" rows="10" readonly><?php echo $isi; ?></textarea>
-                <div class="mt-4">
-                    <p><strong>Waktu:</strong> <?php echo $time; ?></p>
-                    <p><strong>Tag:</strong> <?php echo $tag; ?></p>
-                    <a href="edit.php?id=<?php echo $id; ?>" class="btn btn-primary">Edit</a>
+            <div class="mt-4">
+                <p><strong>Waktu:</strong> <?php echo $time; ?></p>
+                <p><strong>Tag:</strong> <?php echo $tag; ?></p>
+                <div class="text-center">
+                    <a href="crud/edit.php?id=<?php echo $id; ?>" class="btn btn-primary">Edit</a>
                 </div>
             </div>
         </div>

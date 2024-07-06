@@ -1,5 +1,5 @@
 <?php
-require_once "init/init.php";
+require_once('init/init.php');
 $error = '';
 
 if (isset($_SESSION['user'])) {
