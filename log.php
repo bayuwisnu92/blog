@@ -13,22 +13,27 @@ if (isset($_POST['submit'])) {
     $pass = $_POST['password'];
 
     if (!empty($nam) && !empty($pass)) {
-        if (register_cek($_POST)) {
-            $_SESSION['user'] = $nam;
+        $user = register_cek($_POST);
+        if ($user) {
+            // Verifikasi password
+            if (password_verify($pass, $user['password'])) {
+                $_SESSION['user'] = $nam;
 
-            if (isset($_GET['id']) && $_GET['id'] == 69) {
-                header('Location: halaman.php?id=69');
-            } else {
                 header('Location: index.php');
+                    
+                }else
+                header('Location: log.php');
+                exit();
+            } else {
+                $error = "Password salah";
             }
-            exit();
         } else {
             $error = "Nama belum terdaftar";
         }
     } else {
         $error = "Data tidak boleh kosong";
     }
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,11 +67,6 @@ if (isset($_POST['submit'])) {
                             <label for="pwd" class="form-label">Password</label>
                             <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" required>
                             <div class="invalid-feedback">Eh dibejaan kudu diisi.</div>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="myCheck" name="remember" required>
-                            <label class="form-check-label" for="myCheck">I agree to login</label>
-                            <div class="invalid-feedback">Diceklis ieu koplok mun rek lanjut.</div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100" name="submit">Submit</button>
                     </form>

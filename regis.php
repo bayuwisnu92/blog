@@ -12,10 +12,10 @@ if (isset($_SESSION['user'])) {
 
 // Cek data
 if (isset($_POST['submit'])) {
-    global $konek;
+    
     if (register_cek($_POST) == 0) {
         if (register_user($_POST) > 0) {
-            //echo "<script>alert('data berhasil dimasukan')</script>";
+            
             header('Location: log.php');
             exit();
         } else {
@@ -48,12 +48,7 @@ if (isset($_POST['submit'])) {
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="myCheck" name="remember" required>
-                            <label class="form-check-label" for="myCheck">I agree to login.</label>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Check this checkbox to continue.</div>
-                        </div>
+                       
                         <button type="submit" class="btn btn-primary w-100" name="submit">Submit</button>
                         <?php if ($error != '') { ?>
                             <div class="alert alert-warning mt-2">

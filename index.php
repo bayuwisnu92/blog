@@ -42,6 +42,8 @@ require_once 'view/header.php';
                                 <p class="card-text"><?php echo htmlspecialchars(excerpt($row['isi']), ENT_QUOTES, 'UTF-8'); ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="badge bg-info text-dark">Tag: <?php echo htmlspecialchars($row['tag'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <?php  $last_update = $row['waktu']; ?>
+                                    <span style="font-size:12px; margin-left:5px">update : <?php echo time_elapsed_string($last_update); ?></span>
                                     
                                         
                                     

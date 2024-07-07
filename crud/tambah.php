@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
     <h1 class="text-center mb-5">Tambah Postingan</h1>
     <div class="row d-flex justify-content-center mt-6">
         <div class="col-md-8">
-            <form action="" method="post" class="form-group" enctype="multipart/form-data">
+            <form action="/blog/index.php" method="post" class="form-group" enctype="multipart/form-data">
              <input type="file" name="gambar" class="form-control"><br>
                 <input type="text" placeholder="Judul" name="judul" class="form-control"><br><br>
                 <input id="isi" type="hidden" name="isi">

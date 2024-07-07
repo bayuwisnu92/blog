@@ -29,11 +29,11 @@ if (isset($id)) {
                 <?php echo $isi; ?>
             </div>
             <div class="mt-4">
-                <p><strong>Waktu:</strong> <?php echo $time; ?></p>
+            <?php  $last_update = $time; ?>
+            <span style="font-size:15px; margin-left:5px"><strong>update : <?php echo time_elapsed_string($last_update); ?></strong></span>
+                
                 <p><strong>Tag:</strong> <?php echo $tag; ?></p>
-                <div class="text-center">
-                    <a href="crud/edit.php?id=<?php echo $id; ?>" class="btn btn-primary">Edit</a>
-                </div>
+                
             </div>
         </div>
     </div>

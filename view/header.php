@@ -69,4 +69,4 @@ if (isset($_GET['cari'])) {
     </div>
 </nav>
 </body>
-</html>
+

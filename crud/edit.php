@@ -54,6 +54,11 @@ if (isset($_POST['submit'])) {
     <div class="row d-flex justify-content-center mt-6">
         <div class="col-md-8">
             <form action="" method="post" class="form-group" enctype="multipart/form-data">
+            <label for="gambar">Upload Gambar</label>
+                <input type="file" name="gambar" class="form-control"><br><br>
+                <?php if (!empty($gambar)): ?>
+                    <img src="../<?php echo $gambar; ?>" alt="Gambar Artikel" style="max-width: 100%;">
+                <?php endif; ?>
                 <label for="judul">judul</label>
                 <input type="text" placeholder="judul" name="judul" class="form-control" value="<?php echo $judul; ?>"><br><br>
                 <label for="isi">isi</label>
@@ -63,11 +68,7 @@ if (isset($_POST['submit'])) {
                 <input type="text" placeholder="time" id="time" name="time" class="form-control" value="<?php echo $time; ?>"><br><br>
                 <label for="tag">category post</label>
                 <input type="text" placeholder="tag" name="tag" id="tag" class="form-control" value="<?php echo $tag; ?>"><br><br>
-                <label for="gambar">Upload Gambar</label>
-                <input type="file" name="gambar" class="form-control"><br><br>
-                <?php if (!empty($gambar)): ?>
-                    <img src="../<?php echo $gambar; ?>" alt="Gambar Artikel" style="max-width: 100%;">
-                <?php endif; ?>
+               
                 <input type="submit" name="submit" value="kirim" class="btn btn-primary">
             </form>
         </div>
